@@ -60,7 +60,13 @@ class UserRepository {
   }
 
   Future signOut() async {
+    try{
     await account.deleteSessions();
+    } on AppwriteException catch(e){
+      throw Exception(e.message);
+    } catch(e){
+      throw Exception(e);
+    }
   }
 
   Future<bool> isSignedIn() async {

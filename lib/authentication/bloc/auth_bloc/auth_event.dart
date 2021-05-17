@@ -6,3 +6,8 @@ class AppStartedEvent extends AuthEvent{
   @override
   List<Object?> get props => [];
 }
+
+class UserLogoutButtonPressedEvent extends AuthEvent{
+  @override
+  List<Object?> get props => [];
+}

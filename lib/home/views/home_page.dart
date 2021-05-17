@@ -1,3 +1,4 @@
+import 'package:dartcompiler/home/views/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,7 +8,9 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Dart Compiler'),
       ),
-      drawer: const Drawer(),
+      drawer: const Drawer(
+        child: AppDrawer(),
+      ),
       body: Container(),
     );
   }

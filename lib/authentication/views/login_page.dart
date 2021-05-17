@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:dartcompiler/authentication/bloc/login_bloc/login_bloc.dart';
 import 'package:dartcompiler/authentication/bloc/login_bloc/login_event.dart';
 import 'package:dartcompiler/authentication/bloc/login_bloc/login_state.dart';
@@ -17,7 +19,7 @@ class LoginPage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: BlocConsumer<UserLoginBloc,LoginState>(
+          child: BlocConsumer<UserLoginBloc, LoginState>(
               listenWhen: (prevState, nextState) => prevState != nextState,
               buildWhen: (prevState, nextState) => prevState != nextState,
               listener: (BuildContext context, Object? state) {
@@ -93,6 +95,21 @@ class LoginPage extends StatelessWidget {
                           height: 10.0,
                         ),
                         const Divider(),
+                        Center(
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushReplacementNamed(
+                                  context, '/resetpasswordpage');
+                            },
+                            child: const Text(
+                              'Forget Password?',
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
                         const Center(child: Text('Don\'t have an account?')),
                         const SizedBox(
                           height: 20.0,

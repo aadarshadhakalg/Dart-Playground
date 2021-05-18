@@ -1,8 +1,9 @@
-import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_bloc.dart';
-import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_event.dart';
-import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../authentication/bloc/auth_bloc/auth_bloc.dart';
+import '../../authentication/bloc/auth_bloc/auth_event.dart';
+import '../../authentication/bloc/auth_bloc/auth_state.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

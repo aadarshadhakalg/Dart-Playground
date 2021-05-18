@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartcompiler/authentication/bloc/registration_bloc/registration_event.dart';
-import 'package:dartcompiler/authentication/bloc/registration_bloc/registration_state.dart';
-import 'package:dartcompiler/authentication/repositories/user_repository.dart';
+import '../../repositories/user_repository.dart';
+import 'registration_event.dart';
+import 'registration_state.dart';
 
 class UserRegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
   UserRegistrationBloc() : super(UserRegistrationInitialState()) {

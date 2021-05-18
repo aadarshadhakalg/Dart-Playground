@@ -1,14 +1,15 @@
-import 'package:dartcompiler/authentication/bloc/login_bloc/login_bloc.dart';
-import 'package:dartcompiler/authentication/bloc/password_reset_bloc/password_reset_bloc.dart';
-import 'package:dartcompiler/authentication/bloc/registration_bloc/registration_bloc.dart';
-import 'package:dartcompiler/authentication/views/login_page.dart';
-import 'package:dartcompiler/authentication/views/reset_password_page.dart';
-import 'package:dartcompiler/authentication/views/signup_page.dart';
-import 'package:dartcompiler/global/views/splash_screen.dart';
-import 'package:dartcompiler/home/views/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../authentication/bloc/login_bloc/login_bloc.dart';
+import '../../authentication/bloc/password_reset_bloc/password_reset_bloc.dart';
+import '../../authentication/bloc/registration_bloc/registration_bloc.dart';
+import '../../authentication/views/login_page.dart';
+import '../../authentication/views/reset_password_page.dart';
+import '../../authentication/views/signup_page.dart';
+import '../../home/views/home_page.dart';
+import '../views/splash_screen.dart';
 
 class AppRoutes {
   final UserLoginBloc userLoginBloc = UserLoginBloc();

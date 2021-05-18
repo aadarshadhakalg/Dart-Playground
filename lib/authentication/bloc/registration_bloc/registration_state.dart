@@ -1,5 +1,5 @@
-import 'package:dartcompiler/authentication/model/user_model.dart';
 import 'package:equatable/equatable.dart';
+import '../../model/user_model.dart';
 
 abstract class RegistrationState extends Equatable{}
 

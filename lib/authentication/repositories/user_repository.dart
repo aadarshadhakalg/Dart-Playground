@@ -1,7 +1,7 @@
 import 'package:appwrite/appwrite.dart';
-import 'package:dartcompiler/authentication/model/user_model.dart';
-import 'package:dartcompiler/global/res/app_constants.dart';
 import 'package:flutter/foundation.dart';
+import '../../global/res/app_constants.dart';
+import '../model/user_model.dart';
 
 class UserRepository {
   UserRepository._internal() {

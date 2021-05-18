@@ -1,9 +1,10 @@
-import 'package:dartcompiler/authentication/bloc/password_reset_bloc/password_reset_bloc.dart';
-import 'package:dartcompiler/authentication/bloc/password_reset_bloc/password_reset_event.dart';
-import 'package:dartcompiler/authentication/bloc/password_reset_bloc/password_reset_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+
+import '../bloc/password_reset_bloc/password_reset_bloc.dart';
+import '../bloc/password_reset_bloc/password_reset_event.dart';
+import '../bloc/password_reset_bloc/password_reset_state.dart';
 
 class ResetPasswordPage extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();

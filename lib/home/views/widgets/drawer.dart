@@ -1,11 +1,12 @@
-import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_bloc.dart';
-import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_event.dart';
-import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_state.dart';
-import 'package:dartcompiler/authentication/repositories/user_repository.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../authentication/bloc/auth_bloc/auth_bloc.dart';
+import '../../../authentication/bloc/auth_bloc/auth_event.dart';
+import '../../../authentication/bloc/auth_bloc/auth_state.dart';
+import '../../../authentication/repositories/user_repository.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer();

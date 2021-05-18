@@ -1,9 +1,10 @@
-import 'package:dartcompiler/authentication/bloc/registration_bloc/registration_bloc.dart';
-import 'package:dartcompiler/authentication/bloc/registration_bloc/registration_event.dart';
-import 'package:dartcompiler/authentication/bloc/registration_bloc/registration_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+
+import '../bloc/registration_bloc/registration_bloc.dart';
+import '../bloc/registration_bloc/registration_event.dart';
+import '../bloc/registration_bloc/registration_state.dart';
 
 class SignupPage extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();

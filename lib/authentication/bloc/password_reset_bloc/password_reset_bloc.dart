@@ -1,7 +1,7 @@
-import 'package:dartcompiler/authentication/bloc/password_reset_bloc/password_reset_event.dart';
-import 'package:dartcompiler/authentication/bloc/password_reset_bloc/password_reset_state.dart';
-import 'package:dartcompiler/authentication/repositories/user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../repositories/user_repository.dart';
+import 'password_reset_event.dart';
+import 'password_reset_state.dart';
 
 class PasswordResetBloc extends Bloc<PasswordResetEvent, PasswordResetState> {
   PasswordResetBloc() : super(PasswordResetInitialState()) {

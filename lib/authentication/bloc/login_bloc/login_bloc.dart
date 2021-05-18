@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartcompiler/authentication/bloc/login_bloc/login_event.dart';
-import 'package:dartcompiler/authentication/bloc/login_bloc/login_state.dart';
-import 'package:dartcompiler/authentication/repositories/user_repository.dart';
+import '../../repositories/user_repository.dart';
+import 'login_event.dart';
+import 'login_state.dart';
 
 class UserLoginBloc extends Bloc<LoginEvent, LoginState> {
   UserLoginBloc() : super(UserLoginInitialState()) {

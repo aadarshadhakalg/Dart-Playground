@@ -1,10 +1,10 @@
-import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_bloc.dart';
-import 'package:dartcompiler/authentication/repositories/user_repository.dart';
-import 'package:dartcompiler/global/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:dartcompiler/l10n/l10n.dart';
+import '../authentication/bloc/auth_bloc/auth_bloc.dart';
+import '../authentication/repositories/user_repository.dart';
+import '../global/routes/app_routes.dart';
+import '../l10n/l10n.dart';
 
 class App extends StatefulWidget {
   App({Key? key}) : super(key: key);

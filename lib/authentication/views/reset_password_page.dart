@@ -60,6 +60,17 @@ class ResetPasswordPage extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
+                        BlocProvider.of<PasswordResetBloc>(context).add(
+                          ResetPasswordResetStateEvent(),
+                        );
+                      },
+                      child: const Text('Resend Email'),
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
                         Navigator.pushReplacementNamed(context, '/loginpage');
                       },
                       child: const Text('Login'),

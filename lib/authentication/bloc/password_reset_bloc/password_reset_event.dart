@@ -11,3 +11,9 @@ class ResetPasswordButtonPressed extends PasswordResetEvent{
   @override
   List<Object?> get props => [email];
 }
+
+class ResetPasswordResetStateEvent extends PasswordResetEvent{
+
+  @override
+  List<Object?> get props => [];
+}

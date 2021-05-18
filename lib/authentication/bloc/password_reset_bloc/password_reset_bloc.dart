@@ -23,6 +23,9 @@ Password reset link has been sent to ${event.email}. Please check you inbox to p
       } catch (e) {
         yield PasswordResetLinkSendFailureState(message: e.toString());
       }
+    }else if(event is ResetPasswordResetStateEvent){
+      print('object');
+      yield PasswordResetInitialState();
     }
   }
 }

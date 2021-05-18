@@ -1,4 +1,3 @@
-import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_event.dart';
 import 'package:dartcompiler/authentication/model/user_model.dart';
 import 'package:equatable/equatable.dart';
 

@@ -1,4 +1,5 @@
 import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_bloc.dart';
+import 'package:dartcompiler/authentication/repositories/user_repository.dart';
 import 'package:dartcompiler/global/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,18 +20,21 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return BlocProvider<AuthBloc>(
       create: (BuildContext context) => AuthBloc(),
-      child: MaterialApp(
-        theme: ThemeData(
-          accentColor: const Color(0xFF13B9FF),
-          appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+      child: RepositoryProvider<UserRepository>(
+        create: (BuildContext context) => UserRepository.getInstance,
+        child: MaterialApp(
+          theme: ThemeData(
+            accentColor: const Color(0xFF13B9FF),
+            appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+          ),
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
+          initialRoute: '/',
+          onGenerateRoute: _appRoutes.onGenerateRoute,
         ),
-        localizationsDelegates: [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-        ],
-        supportedLocales: AppLocalizations.supportedLocales,
-        initialRoute: '/',
-        onGenerateRoute: _appRoutes.onGenerateRoute,
       ),
     );
   }

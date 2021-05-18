@@ -1,6 +1,7 @@
 import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_bloc.dart';
 import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_event.dart';
 import 'package:dartcompiler/authentication/bloc/auth_bloc/auth_state.dart';
+import 'package:dartcompiler/authentication/repositories/user_repository.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,10 +15,13 @@ class AppDrawer extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        //TODO: Make User Header Dynamic
-        const UserAccountsDrawerHeader(
-          accountName: Text('Aadarsha Dhakal'),
-          accountEmail: Text('braveboy2058@gmail.com'),
+        UserAccountsDrawerHeader(
+          accountName: Text(
+            '''${RepositoryProvider.of<UserRepository>(context).currentUser?.name}''',
+          ),
+          accountEmail: Text(
+            '''${RepositoryProvider.of<UserRepository>(context).currentUser?.email}''',
+          ),
         ),
         Expanded(
           child: Container(),

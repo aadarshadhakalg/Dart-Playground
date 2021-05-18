@@ -6,7 +6,7 @@ import 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitialState()) {
-    userRepository = UserRepository();
+    userRepository = UserRepository.getInstance;
   }
 
   late UserRepository userRepository;

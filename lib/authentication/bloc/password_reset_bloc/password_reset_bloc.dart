@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PasswordResetBloc extends Bloc<PasswordResetEvent, PasswordResetState> {
   PasswordResetBloc() : super(PasswordResetInitialState()) {
-    userRepository = UserRepository();
+    userRepository = UserRepository.getInstance;
   }
 
   late final UserRepository userRepository;

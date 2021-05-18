@@ -5,7 +5,7 @@ import 'package:dartcompiler/authentication/repositories/user_repository.dart';
 
 class UserRegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
   UserRegistrationBloc() : super(UserRegistrationInitialState()) {
-    userRepository = UserRepository();
+    userRepository = UserRepository.getInstance;
   }
 
   late UserRepository userRepository;

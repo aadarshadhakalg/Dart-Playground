@@ -4,16 +4,20 @@ import 'package:dartcompiler/global/res/app_constants.dart';
 import 'package:flutter/foundation.dart';
 
 class UserRepository {
-  UserRepository() {
+  UserRepository._internal() {
+    client = Client()
+      ..setEndpoint(AppConstant.endpoint)
+      ..setProject(AppConstant.projectId).setSelfSigned();
     account = Account(client);
   }
 
-  late Account account;
-  User? currentUser;
+  static UserRepository get getInstance =>
+      _instance ??= UserRepository._internal();
 
-  Client client = Client()
-    ..setEndpoint(AppConstant.endpoint)
-    ..setProject(AppConstant.projectId).setSelfSigned();
+  static UserRepository? _instance;
+  late final Client client;
+  late final Account account;
+  User? currentUser;
 
   Future createUser(String email, String password, String name) async {
     try {
@@ -23,9 +27,10 @@ class UserRepository {
         name: name,
       );
       await account.createSession(email: email, password: password);
-      await account.createVerification(url: 'https://dartcompiler.aadarshadhakal.com.np/verify/');
+      await account.createVerification(
+          url: 'https://dartcompiler.aadarshadhakal.com.np/verify/');
       await getCurrentUser();
-    }on AppwriteException catch(e){
+    } on AppwriteException catch (e) {
       debugPrint(e.message);
       throw Exception(e.message);
     } catch (e) {
@@ -38,7 +43,7 @@ class UserRepository {
     try {
       await account.createSession(email: email, password: password);
       await getCurrentUser();
-    } on AppwriteException catch(e){
+    } on AppwriteException catch (e) {
       debugPrint(e.message);
       throw Exception(e.message);
     } catch (e) {
@@ -47,24 +52,26 @@ class UserRepository {
     }
   }
 
-  Future resetPassword(String email) async{
-    try{
-      await account.createRecovery(email: email, url: 'https://dartcompiler.aadarshadhakal.com.np/reset/');
-    }on AppwriteException catch(e){
+  Future resetPassword(String email) async {
+    try {
+      await account.createRecovery(
+          email: email,
+          url: 'https://dartcompiler.aadarshadhakal.com.np/reset/');
+    } on AppwriteException catch (e) {
       debugPrint(e.message);
       throw Exception(e.message);
-    } catch(e){
+    } catch (e) {
       debugPrint(e.toString());
       throw Exception(e);
     }
   }
 
   Future signOut() async {
-    try{
-    await account.deleteSessions();
-    } on AppwriteException catch(e){
+    try {
+      await account.deleteSessions();
+    } on AppwriteException catch (e) {
       throw Exception(e.message);
-    } catch(e){
+    } catch (e) {
       throw Exception(e);
     }
   }

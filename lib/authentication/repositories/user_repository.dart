@@ -1,21 +1,17 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:dartcompiler/global/services/appwrite.dart';
 import 'package:flutter/foundation.dart';
-import '../../global/res/app_constants.dart';
 import '../model/user_model.dart';
 
 class UserRepository {
   UserRepository._internal() {
-    client = Client()
-      ..setEndpoint(AppConstant.endpoint)
-      ..setProject(AppConstant.projectId).setSelfSigned();
-    account = Account(client);
+    account = AppwriteModules.getModules.account;
   }
 
   static UserRepository get getInstance =>
       _instance ??= UserRepository._internal();
 
   static UserRepository? _instance;
-  late final Client client;
   late final Account account;
   User? currentUser;
 

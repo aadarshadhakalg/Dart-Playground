@@ -24,8 +24,11 @@ class _AppState extends State<App> {
         create: (BuildContext context) => UserRepository.getInstance,
         child: MaterialApp(
           theme: ThemeData(
-            accentColor: const Color(0xFF13B9FF),
-            appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
+            accentColor: Colors.indigo,
+            appBarTheme: const AppBarTheme(color: Colors.indigo),
+            floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              foregroundColor: Colors.white,
+            ),
           ),
           localizationsDelegates: [
             AppLocalizations.delegate,

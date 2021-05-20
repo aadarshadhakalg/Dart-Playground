@@ -17,6 +17,14 @@ class AppDrawer extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         UserAccountsDrawerHeader(
+          arrowColor: Colors.transparent,
+          onDetailsPressed: (){
+            Navigator.pushNamed(context, '/profilepage');
+          },
+          currentAccountPicture:const CircleAvatar(
+            backgroundColor: Colors.red,
+            backgroundImage: AssetImage('assets/images/dart-logo.png'),
+          ),
           accountName: Text(
             '''${RepositoryProvider.of<UserRepository>(context).currentUser?.name}''',
           ),

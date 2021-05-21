@@ -26,7 +26,7 @@ class UserRegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
             uid: userRepository.currentUser!.id,
             name: userRepository.currentUser!.name,
             email: userRepository.currentUser!.email,
-            photo: 'https://localhost/v1/storage/files/60a67e483db94/view?project=60a139971b86a',
+            photo: 'http://dartcompiler.aadarshadhakal.com.np/images/photo.png',
           ),
         );
         yield UserRegistrationSuccessState(

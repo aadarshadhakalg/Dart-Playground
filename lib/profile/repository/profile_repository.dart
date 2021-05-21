@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:appwrite/appwrite.dart';
 import 'package:dartcompiler/authentication/repositories/user_repository.dart';
 import 'package:dartcompiler/global/res/appwrite_constants.dart';
@@ -15,6 +17,7 @@ class ProfileRepository {
   UserProfile? currentUserProfile;
   final UserRepository _userRepository = UserRepository.getInstance;
   final Database _database = AppwriteModules.getModules.database;
+  final Storage _storage = AppwriteModules.getModules.storage;
 
   Future<void> createUserProfile(UserProfile profile) async {
     try {
@@ -42,6 +45,7 @@ class ProfileRepository {
 
       if (response.statusCode == 200) {
         if (response.data['sum'] > 0) {
+          print(jsonEncode(response.data['documents'][0]));
           currentUserProfile =
               UserProfile.fromMap(response.data['documents'][0]);
         } else {
@@ -52,7 +56,45 @@ class ProfileRepository {
       debugPrint(e.toString());
       rethrow;
     }
-
     return currentUserProfile;
+  }
+
+  Future<void> updateUserPhoto(String path) async {
+    try {
+      var result = await _storage.createFile(
+        file: await MultipartFile.fromFile(path),
+      );
+
+      if (result.statusCode == 200 || result.statusCode == 201) {
+        print(result.data);
+        await _database.updateDocument(
+          collectionId: AppwriteConstants.profileCollectionId,
+          documentId: currentUserProfile!.id!,
+          data: {
+            'photo':result.data['\$id'].toString(),
+          },
+        );
+      }else{
+        print(result);
+      }
+    } on AppwriteException catch (e) {
+      print(e.message);
+      throw Exception(e.message);
+    }
+  }
+
+  Future<void> updateUserInfo(String name) async {
+    try {
+        await _database.updateDocument(
+          collectionId: AppwriteConstants.profileCollectionId,
+          documentId: currentUserProfile!.id!,
+          data: {
+            'name':name,
+          },
+        );
+    } on AppwriteException catch (e) {
+      print(e.message);
+      throw Exception(e.message);
+    }
   }
 }

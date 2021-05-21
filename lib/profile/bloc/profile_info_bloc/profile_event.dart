@@ -8,11 +8,9 @@ class EditProfileButtonPressedEvent extends ProfileEvent {
 }
 
 class SaveProfileButtonPressedEvent extends ProfileEvent {
-  SaveProfileButtonPressedEvent({required this.email, required this.name});
-
-  final String? email;
-  final String? name;
+  SaveProfileButtonPressedEvent({required this.name});
+  final String name;
 
   @override
-  List<Object?> get props => [email, name];
+  List<Object?> get props => [name];
 }

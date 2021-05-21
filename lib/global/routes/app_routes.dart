@@ -1,4 +1,5 @@
 import 'package:dartcompiler/profile/bloc/profile_info_bloc/profile_bloc.dart';
+import 'package:dartcompiler/profile/bloc/profile_photo_bloc/profile_photo_bloc.dart';
 import 'package:dartcompiler/profile/views/profile_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class AppRoutes {
   final UserRegistrationBloc userRegistrationBloc = UserRegistrationBloc();
   final PasswordResetBloc passwordResetBloc = PasswordResetBloc();
   final ProfileBloc profileBloc = ProfileBloc();
+  final ProfilePhotoBloc profilePhotoBloc = ProfilePhotoBloc();
 
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -50,10 +52,17 @@ class AppRoutes {
         );
       case '/profilepage':
         return MaterialPageRoute(
-          builder: (_) => BlocProvider<ProfileBloc>.value(
-            value: profileBloc,
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(
+                value: profileBloc,
+              ),
+              BlocProvider.value(
+                value: profilePhotoBloc,
+              ),
+            ],
             child: ProfilePage(),
-          ),
+          )
         );
       default:
         return _errorRoute();
@@ -78,5 +87,6 @@ class AppRoutes {
     userLoginBloc.close();
     passwordResetBloc.close();
     profileBloc.close();
+    profilePhotoBloc.close();
   }
 }

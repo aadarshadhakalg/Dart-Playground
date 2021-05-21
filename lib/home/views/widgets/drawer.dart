@@ -1,3 +1,4 @@
+import 'package:dartcompiler/profile/repository/profile_repository.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,7 +7,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../authentication/bloc/auth_bloc/auth_bloc.dart';
 import '../../../authentication/bloc/auth_bloc/auth_event.dart';
 import '../../../authentication/bloc/auth_bloc/auth_state.dart';
-import '../../../authentication/repositories/user_repository.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer();
@@ -18,18 +18,22 @@ class AppDrawer extends StatelessWidget {
       children: [
         UserAccountsDrawerHeader(
           arrowColor: Colors.transparent,
-          onDetailsPressed: (){
+          onDetailsPressed: () {
             Navigator.pushNamed(context, '/profilepage');
           },
-          currentAccountPicture:const CircleAvatar(
+          currentAccountPicture:  CircleAvatar(
             backgroundColor: Colors.red,
-            backgroundImage: AssetImage('assets/images/dart-logo.png'),
+            backgroundImage: NetworkImage(
+              '${RepositoryProvider.of<ProfileRepository>(context)
+                  .currentUserProfile
+                  ?.photo}',
+            ),
           ),
           accountName: Text(
-            '''${RepositoryProvider.of<UserRepository>(context).currentUser?.name}''',
+            '''${RepositoryProvider.of<ProfileRepository>(context).currentUserProfile?.name}''',
           ),
           accountEmail: Text(
-            '''${RepositoryProvider.of<UserRepository>(context).currentUser?.email}''',
+            '''${RepositoryProvider.of<ProfileRepository>(context).currentUserProfile?.email}''',
           ),
         ),
         Expanded(

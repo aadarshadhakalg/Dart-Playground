@@ -1,4 +1,4 @@
-import 'package:dartcompiler/profile/models/profile_model.dart';
+import 'package:dartcompiler/authentication/model/user_model.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class LoginState extends Equatable{}
@@ -16,7 +16,7 @@ class UserLoginLoadingState extends LoginState{
 class UserLoginSuccessState extends LoginState{
 
   UserLoginSuccessState({required this.currentUser});
-  final UserProfile currentUser;
+  final User currentUser;
 
   @override
   List<Object?> get props => [];

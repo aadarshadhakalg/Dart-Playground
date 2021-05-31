@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartcompiler/profile/models/profile_model.dart';
-import 'package:dartcompiler/profile/repository/profile_repository.dart';
+import 'package:dartcompiler/home/repositories/function_collection_repository.dart';
+import 'package:dartcompiler/home/repositories/functions_repositories.dart';
 import '../../repositories/user_repository.dart';
 import 'registration_event.dart';
 import 'registration_state.dart';
@@ -8,11 +8,13 @@ import 'registration_state.dart';
 class UserRegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
   UserRegistrationBloc() : super(UserRegistrationInitialState()) {
     userRepository = UserRepository.getInstance;
-    profileRepository = ProfileRepository.getInstance;
+    functionsRepository = FunctionsRepository.getInstance;
+    functionCollectionRepository = FunctionCollectionRepository.getInstance;
   }
 
   late UserRepository userRepository;
-  late ProfileRepository profileRepository;
+  late FunctionsRepository functionsRepository;
+  late FunctionCollectionRepository functionCollectionRepository;
 
   @override
   Stream<RegistrationState> mapEventToState(RegistrationEvent event) async* {
@@ -21,14 +23,16 @@ class UserRegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
       try {
         await userRepository.createUser(
             event.email, event.password, event.name);
-        await profileRepository.createUserProfile(
-          UserProfile(
-            uid: userRepository.currentUser!.id,
-            name: userRepository.currentUser!.name,
-            email: userRepository.currentUser!.email,
-            photo: 'http://dartcompiler.aadarshadhakal.com.np/images/photo.png',
-          ),
+        var fid = await functionsRepository.createFunctions(
+          userRepository.currentUser!.name,
+          ['*', 'user:${userRepository.currentUser!.id}'],
+          'dart-2.10',
         );
+        print(fid);
+        
+        await functionCollectionRepository.addCollection(
+            userRepository.currentUser!.id, fid!);
+        print('reached here');
         yield UserRegistrationSuccessState(
             currentUser: userRepository.currentUser!);
       } catch (e) {

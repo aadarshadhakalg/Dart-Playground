@@ -21,7 +21,12 @@ class AppwriteModules {
   late final Account account;
   late final Database database;
   late final Avatars avatars;
+  late final Functions functions;
 
   static AppwriteModules get getModules =>
       _modules ?? AppwriteModules._internal();
+
+  static void dispose(){
+    _modules = null;
+  }
 }

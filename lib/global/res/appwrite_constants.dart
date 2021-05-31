@@ -1,3 +1,3 @@
 class AppwriteConstants {
-  static String profileCollectionId = '60a73d9eda23f';
+  static String functionsCollectionId = '60aa53a0187af';
 }

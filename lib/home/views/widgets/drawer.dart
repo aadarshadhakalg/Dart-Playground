@@ -1,4 +1,4 @@
-import 'package:dartcompiler/profile/repository/profile_repository.dart';
+import 'package:dartcompiler/authentication/repositories/user_repository.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,19 +21,16 @@ class AppDrawer extends StatelessWidget {
           onDetailsPressed: () {
             Navigator.pushNamed(context, '/profilepage');
           },
-          currentAccountPicture:  CircleAvatar(
+          currentAccountPicture:const CircleAvatar(
             backgroundColor: Colors.red,
             backgroundImage: NetworkImage(
-              '${RepositoryProvider.of<ProfileRepository>(context)
-                  .currentUserProfile
-                  ?.photo}',
-            ),
+                'https://dartcompiler.aadarshadhakal.com.np/images/photo.png'),
           ),
           accountName: Text(
-            '''${RepositoryProvider.of<ProfileRepository>(context).currentUserProfile?.name}''',
+            '''${RepositoryProvider.of<UserRepository>(context).currentUser?.name}''',
           ),
           accountEmail: Text(
-            '''${RepositoryProvider.of<ProfileRepository>(context).currentUserProfile?.email}''',
+            '''${RepositoryProvider.of<UserRepository>(context).currentUser?.email}''',
           ),
         ),
         Expanded(

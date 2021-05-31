@@ -1,11 +1,14 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:dartcompiler/global/services/appwrite.dart';
+import 'package:dartcompiler/global/services/appwrite_server.dart' as server;
+import 'package:dart_appwrite/dart_appwrite.dart' as ds;
 import 'package:flutter/foundation.dart';
 import '../model/user_model.dart';
 
 class UserRepository {
   UserRepository._internal() {
     account = AppwriteModules.getModules.account;
+    functions = server.AppwriteServerModules.getModules.functions;
   }
 
   static UserRepository get getInstance =>
@@ -13,7 +16,9 @@ class UserRepository {
 
   static UserRepository? _instance;
   late final Account account;
+  late final ds.Functions functions;
   User? currentUser;
+
 
   Future createUser(String email, String password, String name) async {
     try {
@@ -65,6 +70,8 @@ class UserRepository {
   Future signOut() async {
     try {
       await account.deleteSessions();
+      currentUser = null;
+      AppwriteModules.dispose();
     } on AppwriteException catch (e) {
       throw Exception(e.message);
     } catch (e) {

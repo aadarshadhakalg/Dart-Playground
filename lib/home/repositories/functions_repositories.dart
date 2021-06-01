@@ -20,7 +20,7 @@ class FunctionsRepository {
           await functions.create(name: name, execute: execute, env: env);
       functionid = result.data['\$id'];
     } on AppwriteException catch (e) {
-      print(e.message! + 'code' + e.code.toString());
+      print( '${e.message!} code ${ e.code.toString()}');
       throw Exception(e.message);
     }
     return functionid;

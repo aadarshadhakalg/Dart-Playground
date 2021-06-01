@@ -36,7 +36,7 @@ class ArchiveService {
     final path = await _localPath;
     File? zipped;
 
-    var encoder = ZipFileEncoder()
+    ZipFileEncoder()
       ..create('$path/code.zip')
       ..addDirectory(Directory('$path/code'))
       // ..addFile(

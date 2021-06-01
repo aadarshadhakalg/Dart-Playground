@@ -17,46 +17,30 @@ class CreateCollection {
     var exists = false;
 
     allCollections?.map((e) {
-      e['name'] == 'Profile' ? exists = true : exists = false;
+      e['name'] == 'Functions' ? exists = true : exists = false;
     });
 
     if (!exists) {
       await db.createCollection(
-        name: 'Profile',
-        read: ['role:member'],
-        write: ['role:member'],
+        name: 'Functions',
+        read: ['*'],
+        write: ['*'],
         rules: [
           {
             'type': 'text',
             'key': 'uid',
-            'label': 'User Id',
+            'label': 'UID',
             'default': '',
             'array': false,
             'required': true,
           },
           {
             'type': 'text',
-            'key': 'name',
-            'label': 'Name',
+            'key': 'fid',
+            'label': 'FID',
             'default': '',
             'array': false,
             'required': true,
-          },
-          {
-            'type': 'text',
-            'key': 'email',
-            'label': 'Email',
-            'default': '',
-            'array': false,
-            'required': true,
-          },
-          {
-            'type': 'url',
-            'key': 'photo',
-            'label': 'Photo',
-            'default': '',
-            'array': false,
-            'required': false,
           }
         ],
       );

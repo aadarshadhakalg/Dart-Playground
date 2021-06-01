@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:appwrite/appwrite.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartcompiler/authentication/repositories/user_repository.dart';
 import 'package:dartcompiler/home/repositories/function_collection_repository.dart';

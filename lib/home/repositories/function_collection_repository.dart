@@ -35,7 +35,7 @@ class FunctionCollectionRepository {
     try {
       var result = await _database.listDocuments(
         collectionId: AppwriteConstants.functionsCollectionId,
-        filters: ['uid=${uid}'],
+        filters: ['uid=$uid'],
       );
       
       fid = result.data['documents'][0]['fid'];

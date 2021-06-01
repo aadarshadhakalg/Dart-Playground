@@ -1,5 +1,8 @@
 # BLoC-Appwrite-Dart Online Compiler
 
+![samp](https://user-images.githubusercontent.com/19362725/120274250-49605180-c2cf-11eb-844f-693af8514c92.gif)
+
+
 This project was done during #30daysofappwrite event. This project make use of an open source backend as a service Appwrite. 
 
 Dart Online Compiler is a app where user can write and run small dart programmes without installing dart sdk in their system. This app uses Appwrite functions to run the dart programmes written by users in serverside and send the output as a respons back to app.

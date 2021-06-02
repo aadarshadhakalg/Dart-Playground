@@ -95,11 +95,9 @@ packages:
   code_editor:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "09920d46d42255ac1bcaf6db2c5dfeacca386802"
-      url: "https://github.com/aadarshadhakalg/code_editor.git"
-    source: git
+      path: "../code_editor"
+      relative: true
+    source: path
     version: "1.1.1"
   collection:
     dependency: transitive

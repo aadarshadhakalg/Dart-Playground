@@ -21,8 +21,9 @@ dependencies:
   url_launcher: ^6.0.3
   image_picker: ^0.7.5
   code_editor:
-    git:
-      url: https://github.com/aadarshadhakalg/code_editor.git
+    path: ../code_editor
+    # git:
+    #   url: https://github.com/aadarshadhakalg/code_editor.git
   archive: ^3.1.2
   path_provider: ^2.0.2
 

@@ -15,6 +15,14 @@ Dart Online Compiler is a app where user can write and run small dart programmes
 
 This project was done just for fun and testing different features provided by Appwrite especially Appwrite Functions which seems preety promising to me. 
 
+#Setup Project
+
+1. Run appwrite server : https://appwrite.io/docs/installation
+2. Create a project and add android platform in the project from appwrite dashboard
+3. Replace endpoint and project id in app_constants.dart file
+4. Run the backend collection generation dart script
+5. Run the flutter app
+
 
 # Screenshots
 

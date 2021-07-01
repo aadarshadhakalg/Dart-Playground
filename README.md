@@ -1,4 +1,4 @@
-# BLoC-Appwrite-Dart Online Compiler
+# Dart Playground
 
 ![samp](https://user-images.githubusercontent.com/19362725/120274250-49605180-c2cf-11eb-844f-693af8514c92.gif)
 

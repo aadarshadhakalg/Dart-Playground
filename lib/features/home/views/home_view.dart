@@ -27,11 +27,11 @@ class HomeView extends StatelessWidget {
               width: 10,
             ),
           ],
-          expandedHeight: 441,
+          expandedHeight: 420,
           flexibleSpace: FlexibleSpaceBar(
             collapseMode: CollapseMode.none,
             background: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
               child: Column(
                 children: [
                   const SizedBox(
@@ -40,7 +40,7 @@ class HomeView extends StatelessWidget {
                   DailyTips(
                       title: 'Learn about spread operators.', onTap: () {}),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,9 +67,6 @@ class HomeView extends StatelessWidget {
                     height: 10,
                   ),
                   const LabCard(),
-                  const SizedBox(
-                    height: 30,
-                  ),
                 ],
               ),
             ),
@@ -79,9 +76,10 @@ class HomeView extends StatelessWidget {
           delegate: SliverChildListDelegate(
             [
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  top: 10,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
